@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SSE Client</title>
+</head>
+<body>
+  <h1>Server-Sent Events Client #2</h1>
+  <div id="messages"></div>
+
+  <script>
+    const clientId = 'client2'; // Example client ID, can be dynamic
+
+    const eventSource = new EventSource(`/events?id=${clientId}`);
+
+    eventSource.onmessage = function(event) {
+      const messageDiv = document.getElementById('messages');
+      const newMessage = document.createElement('div');
+      newMessage.textContent = event.data;
+      messageDiv.appendChild(newMessage);
+    };
+  </script>
+</body>
+</html>
